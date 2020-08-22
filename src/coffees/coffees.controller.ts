@@ -23,7 +23,7 @@ export class CoffeesController {
     private readonly coffeesService: CoffeesService,
     @Inject(REQUEST) private readonly request: Request,
   ) {
-    console.log('CoffeesController created', request);
+    console.log('CoffeesController created');
   }
 
   @Get()
