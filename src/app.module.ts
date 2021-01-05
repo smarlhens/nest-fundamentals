@@ -27,7 +27,7 @@ import { CommonModule } from './common/common.module';
     CoffeesModule,
     CoffeeRatingModule,
     DatabaseModule,
-    CommonModule,
+    // CommonModule,
   ],
   controllers: [AppController],
   providers: [
