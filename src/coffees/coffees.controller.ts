@@ -16,6 +16,9 @@ import { Coffee } from './entities/coffee.entity';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { REQUEST } from '@nestjs/core';
 import { Request } from '@nestjs/common';
+import { Public } from '../common/decorators/public.decorator';
+import { ParseIntPipe } from '../common/pipes/parse-int.pipe';
+import { Protocol } from '../common/decorators/protocol.decorator';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -26,14 +29,17 @@ export class CoffeesController {
     console.log('CoffeesController created');
   }
 
+  @Public()
   @Get()
-  findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
+  async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
     // const { limit, offset } = paginationQuery;
+    // await new Promise(resolve => setTimeout(resolve, 5000));
+    console.log(protocol);
     return this.coffeesService.findAll(paginationQuery);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Coffee> {
+  findOne(@Param('id', ParseIntPipe) id: string): Promise<Coffee> {
     return this.coffeesService.findOne(id);
   }
 
