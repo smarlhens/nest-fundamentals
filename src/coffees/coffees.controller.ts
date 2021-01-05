@@ -16,6 +16,7 @@ import { Coffee } from './entities/coffee.entity';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { REQUEST } from '@nestjs/core';
 import { Request } from '@nestjs/common';
+import { Public } from '../common/decorators/public.decorator';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -26,6 +27,7 @@ export class CoffeesController {
     console.log('CoffeesController created');
   }
 
+  @Public()
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
     // const { limit, offset } = paginationQuery;
