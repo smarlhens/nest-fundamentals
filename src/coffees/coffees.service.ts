@@ -19,11 +19,11 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     private readonly connection: Connection,
-    @Inject(COFFEE_BRANDS) coffeeBrands: string[],
-    @Inject(coffeesConfig.KEY)
-    private coffeesConfiguration: ConfigType<typeof coffeesConfig>,
+    // @Inject(COFFEE_BRANDS) coffeeBrands: string[],
+    // @Inject(coffeesConfig.KEY)
+    // private coffeesConfiguration: ConfigType<typeof coffeesConfig>,
   ) {
-    console.log(coffeesConfiguration.foo);
+    // console.log(coffeesConfiguration.foo);
   }
 
   findAll(paginationQuery: PaginationQueryDto): Promise<Coffee[]> {
